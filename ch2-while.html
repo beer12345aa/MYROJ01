@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การวนซ้ำ while</title>
+</head>
+<body>
+    <h2>การวนซ้ำ while</h2>
+
+    <script>
+        // รับข้อความจากผู้ใช้และรวมข้อความ
+        let input = prompt("พิมพ์ข้อความ (พิมพ์ 'จบ' เพื่อออก):");
+        let result = ""; // ตัวแปรเก็บข้อความทั้งหมด
+
+        while (input !== "จบ") {
+            result += input + "<br>"; // เพิ่ม <br> เพื่อให้แสดงขึ้นบรรทัดใหม่
+            input = prompt("พิมพ์ข้อความ (พิมพ์ 'จบ' เพื่อออก):");
+        }
+
+        // แสดงข้อความทั้งหมดที่ผู้ใช้ป้อน
+        document.write("<h3>คุณได้ป้อนข้อความดังนี้:</h3>");
+        document.write("<p style='color: green; font-size: 18px;'>" + result + "</p>");
+    </script>
+
+    <script>
+        // หาผลรวมของเลข 1 ถึง 5
+        let sum = 0;
+        let i = 1;
+        while (i <= 5) {
+            console.log("i =", i);
+            sum += i;
+            i++;
+        }
+        console.log("ผลรวม: " + sum);   
+    </script>
+</body>
+</html>

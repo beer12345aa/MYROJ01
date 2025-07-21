@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h3>✍️ตัวอย่างที่ 1: เปลี่ยนข้อความเมื่อคลิก</h3>
+<p onclick="this.innerHTML = 'ว่าเเล้วต้องคลิก!'">อย่าคลิก</p>
+<hr>
+<h3>✍️ตัวอย่างที่ 2: เปลี่ยนสีตัวหนังสือเมื่อชี้เมาส์</h3>
+<h2 onmouseover="this.style.color='red'" onmouseout="this.style.color='black'">ชี้เมาส์ที่นี่</h2>
+<hr>
+<h3>✍️ตัวอย่างที่ 3: รับค่าจาก input แล้วแสดงผล</h3>
+<input type="text" onchange="document.getElementById('output').innerHTML = 'คุณพิมพ์ว่า: ' + this.value">
+<p id="output"></p>
+
+</body>
+</html>

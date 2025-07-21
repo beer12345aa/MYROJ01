@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ผลคะแนนสอบ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 28px;
+            color: #333;
+        }
+        .grade {
+            font-size: 32px;
+            color: #0077cc;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="result">
+    <!-- ผลลัพธ์จะแสดงที่นี่ -->
+</div>
+
+<script>
+    const scoreInput = prompt("กรุณากรอกคะแนน (0-100):");
+    const score = parseFloat(scoreInput);
+    const resultDiv = document.getElementById('result');
+
+    if (!isNaN(score) && score >= 0 && score <= 100) {
+        let grade;
+        switch (true) {
+            case (score >= 80):หดเ
+                grade = 'A';
+                break;
+            case (score >= 70):
+                grade = 'B';
+                break;
+            case (score >= 60):
+                grade = 'C';
+                break;
+            case (score >= 50):
+                grade = 'D';
+                break;
+            default:
+                grade = 'F';
+        }
+
+        resultDiv.innerHTML = `
+            <h2>📝📖คะแนนของคุณคือ ${score}📝📖</h2>
+            <div class="grade">ได้เกรด: ${grade}</div>
+        `;
+        console.log(`คุณได้เกรด: ${grade}`);
+    } else {
+        resultDiv.innerHTML = `
+            <h2 class="error">กรุณากรอกคะแนนที่เป็นตัวเลขระหว่าง 0 ถึง 100</h2>
+        `;
+        console.log("ข้อมูลไม่ถูกต้อง");
+    }
+</script>
+</body>
+</html>

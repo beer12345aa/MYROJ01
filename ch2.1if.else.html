@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แสดงน้ำหนัก</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<script>
+let weightInput = prompt("กรุณากรอกน้ำหนักตัวของท่าน (0 - 100):");
+let weight = parseFloat(weightInput);
+
+if (!isNaN(weight) && weight >= 0 && weight <= 100) {
+    if (weight > 90) {
+        document.write(`<h3 style="color: red;">น้ำหนักตัว ${weight} กก. อยู่ในเกณฑ์อ้วนมาก</h3>`);
+    } else if (weight >= 76) {
+        document.write(`<h3 style="color: red;">น้ำหนักตัว ${weight} กก. เข้าข่ายอ้วน</h3>`);
+    } else if (weight >= 64) {
+        document.write(`<h3 style="color: gold;">น้ำหนักตัว ${weight} กก. มีน้ำหนักเกิน</h3>`);
+    } else if (weight >= 50) {
+        document.write(`<h3 style="color: green;">น้ำหนักตัว ${weight} กก. อยู่ในเกณฑ์ปกติ</h3>`);
+    } else {
+        document.write(`<h3 style="color: green;">น้ำหนักตัว ${weight} กก. อยู่ในเกณฑ์ผอม</h3>`);
+    }
+} else {
+    document.write(`<h3 style="color: red;">กรุณากรอกน้ำหนักที่ถูกต้อง (0 - 100)</h3>`);
+    console.log("ข้อมูลไม่ถูกต้อง");
+}
+</script>
+</body>
+</html>

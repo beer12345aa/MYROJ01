@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แบบประเมินโรคซึมเศร้า</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #cceeff, #e6f2ff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004d80;
+      margin-top: 30px;
+    }
+
+    form {
+      width: 90%;
+      max-width: 1000px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f0faff;
+      color: #004d80;
+    }
+
+    td.question {
+      text-align: left;
+    }
+
+    button {
+      margin-top: 25px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #006699;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .summary-table {
+      width: 60%;
+      margin: 20px auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .summary-table th {
+      background-color: #b3e0ff;
+      color: #003d66;
+    }
+
+    .summary-table td {
+      background-color: #e6f7ff;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      table, .summary-table {
+        font-size: 14px;
+      }
+
+      form {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>แบบประเมินโรคซึมเศร้า (9 ข้อ)</h1>
+  <form id="depressionForm">
+    <table>
+      <thead>
+        <tr>
+          <th>ข้อ</th>
+          <th class="question">คำถาม</th>
+          <th>ไม่มีเลย<br>(0)</th>
+          <th>เป็นบางวัน<br>(1)</th>
+          <th>เป็นบ่อย<br>(2)</th>
+          <th>เป็นทุกวัน<br>(3)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <script>
+          const questions = [
+            "เบื่อ ไม่สนใจอยากทำอะไร",
+            "ไม่สบายใจ ซึมเศร้า ท้อแท้",
+            "หลับยากหรือนอนหลับๆ ตื่นๆ หรือหลับมากไป",
+            "เหนื่อยง่าย หรือ ไม่ค่อยมีแรง",
+            "เบื่ออาหาร หรือ กินมากเกินไป",
+            "รู้สึกไม่ดีกับตัวเอง คิดว่าตัวเองล้มเหลว หรือครอบครัวผิดหวัง",
+            "สมาธิไม่ดี เวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ หรือทำงานที่ต้องใช้ความตั้งใจ",
+            "พูดช้าหรือกระสับกระส่ายจนคนอื่นสังเกตเห็นได้",
+            "คิดทำร้ายตนเอง หรือคิดว่าถ้าตายไปคงจะดี"
+          ];
+
+          for (let i = 0; i < questions.length; i++) {
+            document.write(`
+              <tr>
+                <td>${i + 1}</td>
+                <td class="question">${questions[i]}</td>
+                <td><input type="radio" name="q${i + 1}" value="0" required></td>
+                <td><input type="radio" name="q${i + 1}" value="1"></td>
+                <td><input type="radio" name="q${i + 1}" value="2"></td>
+                <td><input type="radio" name="q${i + 1}" value="3"></td>
+              </tr>
+            `);
+          }
+        </script>
+      </tbody>
+    </table>
+    <button type="button" onclick="calculateScore()">ส่งคำตอบ</button>
+  </form>
+
+  <div id="summary" class="result"></div>
+
+  <table class="summary-table" id="scoreTable" style="display:none;">
+    <tr>
+      <th>คะแนนรวม</th>
+      <th>ผลการประเมิน</th>
+    </tr>
+    <tr>
+      <td id="totalScore"></td>
+      <td id="scoreLevel"></td>
+    </tr>
+  </table>
+
+  <script>
+    function calculateScore() {
+      let total = 0;
+      for (let i = 1; i <= 9; i++) {
+        const radios = document.getElementsByName('q' + i);
+        let answered = false;
+        for (let radio of radios) {
+          if (radio.checked) {
+            total += parseInt(radio.value);
+            answered = true;
+            break;
+          }
+        }
+        if (!answered) {
+          alert("กรุณาตอบคำถามให้ครบทุกข้อ");
+          return;
+        }
+      }
+
+      let level = "";
+      if (total < 7) {
+        level = "ไม่มีภาวะซึมเศร้า";
+      } else if (total < 13) {
+        level = "ซึมเศร้าเล็กน้อย";
+      } else if (total < 19) {
+        level = "ซึมเศร้าปานกลาง";
+      } else {
+        level = "ซึมเศร้ารุนแรง";
+      }
+
+      document.getElementById("summary").textContent = "คุณได้คะแนนรวม: " + total + " คะแนน";
+      document.getElementById("totalScore").textContent = total;
+      document.getElementById("scoreLevel").textContent = level;
+      document.getElementById("scoreTable").style.display = "table";
+    }
+  </script>
+</body>
+</html>
