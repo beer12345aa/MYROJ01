@@ -3,114 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>แบบประเมินโรคซึมเศร้า</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #cceeff, #e6f2ff);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  <link rel="stylesheet" href="css2.css">
+  <title>😭แบบประเมินโรคซึมเศร้า😭</title>
 
-    h1 {
-      text-align: center;
-      color: #004d80;
-      margin-top: 30px;
-    }
+  <!-- โหลดฟอนต์ภาษาไทยจาก Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
 
-    form {
-      width: 90%;
-      max-width: 1000px;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      padding: 12px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #f0faff;
-      color: #004d80;
-    }
-
-    td.question {
-      text-align: left;
-    }
-
-    button {
-      margin-top: 25px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    .result {
-      font-size: 20px;
-      font-weight: bold;
-      color: #006699;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .summary-table {
-      width: 60%;
-      margin: 20px auto;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .summary-table th {
-      background-color: #b3e0ff;
-      color: #003d66;
-    }
-
-    .summary-table td {
-      background-color: #e6f7ff;
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      table, .summary-table {
-        font-size: 14px;
-      }
-
-      form {
-        padding: 20px;
-      }
-    }
-  </style>
+  <!-- ลิงก์ไฟล์ CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <h1>แบบประเมินโรคซึมเศร้า (9 ข้อ)</h1>
+  <h1>แบบประเมินโรคซึมเศร้า😭 (9 ข้อ)</h1>
+
+  <!-- ฟอร์มแบบสอบถาม -->
   <form id="depressionForm">
     <table>
       <thead>
@@ -126,7 +32,7 @@
       <tbody>
         <script>
           const questions = [
-            "เบื่อ ไม่สนใจอยากทำอะไร",
+            "เบื่อ ทำอะไร ๆ ก็ไม่เพลิดเพลิน",
             "ไม่สบายใจ ซึมเศร้า ท้อแท้",
             "หลับยากหรือนอนหลับๆ ตื่นๆ หรือหลับมากไป",
             "เหนื่อยง่าย หรือ ไม่ค่อยมีแรง",
@@ -152,6 +58,7 @@
         </script>
       </tbody>
     </table>
+
     <button type="button" onclick="calculateScore()">ส่งคำตอบ</button>
   </form>
 
@@ -174,6 +81,7 @@
       for (let i = 1; i <= 9; i++) {
         const radios = document.getElementsByName('q' + i);
         let answered = false;
+
         for (let radio of radios) {
           if (radio.checked) {
             total += parseInt(radio.value);
@@ -181,6 +89,7 @@
             break;
           }
         }
+
         if (!answered) {
           alert("กรุณาตอบคำถามให้ครบทุกข้อ");
           return;
@@ -189,13 +98,13 @@
 
       let level = "";
       if (total < 7) {
-        level = "ไม่มีภาวะซึมเศร้า";
+        level = "ไม่มีภาวะซึมเศร้า 😊";
       } else if (total < 13) {
-        level = "ซึมเศร้าเล็กน้อย";
+        level = "ซึมเศร้าเล็กน้อย 😐";
       } else if (total < 19) {
-        level = "ซึมเศร้าปานกลาง";
+        level = "ซึมเศร้าปานกลาง 😟";
       } else {
-        level = "ซึมเศร้ารุนแรง";
+        level = "ซึมเศร้ารุนแรง 😢";
       }
 
       document.getElementById("summary").textContent = "คุณได้คะแนนรวม: " + total + " คะแนน";

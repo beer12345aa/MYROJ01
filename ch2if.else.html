@@ -1,48 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <title>คะแนนสอบ</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>คะแนนสอบ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    #result {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
+
+<div id="result"></div>
+
 <script>
-
-// รับค่าคะแนนจากผู้ใช้
-
-let scoreInput = prompt("กรุณากรอกคะแนนของคุณ (0 -100):");
+let scoreInput = prompt("กรุณากรอกคะแนนของคุณ (0 - 100):");
 let score = parseFloat(scoreInput);
+
+// อ้างอิง element สำหรับแสดงผล
+const resultDiv = document.getElementById("result");
+
 // ตรวจสอบว่าเป็นตัวเลขและอยู่ในช่วงที่ถูกต้อง
 if (!isNaN(score) && score >= 0 && score <= 100) {
-// เงื่อนไข if เพื่อตรวจสอบผ่าน / ไม่ผ่าน
-if (score >= 80) {
-document.write(`<h3 style="color: Green;">คุณสอบผ่าน A ด้วยคะแนน ${score} คะแนน</h3>`);
-console.log(`สอบผ่าน: ${score} คะแนน`);
-}  else if (score >= 70)  {
-document.write(`<h3 style="color: Green ;">คุณสอบผ่าน B ด้วยคะแนน ${score} คะแนน</h3>`);
-console.log(`สอบไม่ผ่าน: ${score} คะแนน`);
-
-} else if (score >= 60) {
-document.write(`<h3 style="color: Green ;">คุณสอบผ่าน C ด้วยคะแนน ${score} คะแนน</h3>`);
-console.log(`สอบไม่ผ่าน: ${score} คะแนน`);
-
-} else if (score >= 50) {
-document.write(`<h3 style="color: Green ;">คุณสอบผ่าน D ด้วยคะแนน ${score} คะแนน</h3>`);
-console.log(`สอบไม่ผ่าน: ${score} คะแนน`);
-
-} else if (score >= 40) {
-document.write(`<h3 style="color: Red  ;">คุณสอบไม่ผ่าน F ด้วยคะแนน ${score} คะแนน</h3>`);
-console.log(`สอบไม่ผ่าน: ${score} คะแนน`);}
-
+  if (score >= 80) {
+    resultDiv.innerHTML = `<span style="color: green;">คุณสอบผ่าน A ด้วยคะแนน ${score} คะแนน</span>`;
+    console.log(`สอบผ่าน: ${score} คะแนน`);
+  } else if (score >= 70) {
+    resultDiv.innerHTML = `<span style="color: green;">คุณสอบผ่าน B ด้วยคะแนน ${score} คะแนน</span>`;
+    console.log(`สอบผ่าน: ${score} คะแนน`);
+  } else if (score >= 60) {
+    resultDiv.innerHTML = `<span style="color: green;">คุณสอบผ่าน C ด้วยคะแนน ${score} คะแนน</span>`;
+    console.log(`สอบผ่าน: ${score} คะแนน`);
+  } else if (score >= 50) {
+    resultDiv.innerHTML = `<span style="color: green;">คุณสอบผ่าน D ด้วยคะแนน ${score} คะแนน</span>`;
+    console.log(`สอบผ่าน: ${score} คะแนน`);
+  } else {
+    resultDiv.innerHTML = `<span style="color: red;">คุณได้ F ด้วยคะแนน ${score} คะแนน (ไม่ผ่าน)</span>`;
+    console.log(`สอบไม่ผ่าน: ${score} คะแนน`);
+  }
 } else {
-document.write(`<h3 style="color: blue;">กรุณากรอกคะแนนที่ถูกต้อง (0 -100)</h3>`);
-console.log("ข้อมูลไม่ถูกต้อง");
+  resultDiv.innerHTML = `<span style="color: blue;">กรุณากรอกคะแนนที่ถูกต้อง (0 - 100)</span>`;
+  console.log("ข้อมูลไม่ถูกต้อง");
 }
-
-
-
-
-
 </script>
 </body>
 </html>

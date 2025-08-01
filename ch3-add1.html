@@ -1,38 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css1.css">
+  <title>แบบฝึกหัด</title>
 </head>
+
 <body>
-    <div class="section">
-        <h3>แบบฝึกหัดที่ 1: สร้างปุ่ม 3 ปุ่มให้แสดงคำต่างกัน</h3>
-        <button id="show1">คำถามข้อที่ 1</button>
-        <button id="show2">คำถามข้อที่ 2</button>
-        <button id="show3">คำถามข้อที่ 3</button>
-        <p id="output1"></p>
-    </div>
+  <h1>แบบฝึกหัด addEventListener()</h1>
 
-    <script>
-        const btn1 = document.getElementById("show1");
-        const btn2 = document.getElementById("show2");
-        const btn3 = document.getElementById("show3");
-        const output1 = document.getElementById("output1");
+  <!-- แบบฝึกหัด 1 -->
+  <div class="section">
+    <h3>แบบฝึกหัดที่ 1: สร้างปุ่ม 3 ปุ่มให้แสดงคำต่างกัน</h3>
+    <button id="show1">คำถามข้อที่ 1</button>
+    <button id="show2">คำถามข้อที่ 2</button>
+    <button id="show3">คำถามข้อที่ 3</button>
+    <p id="output1"></p>
+  </div>
 
-        btn1.addEventListener("click", function () {
-            output1.textContent = "คุณคลิกข้อที่ 1 ! 🎉";
-        });
+  <!-- แบบฝึกหัด 2 -->
+  <div class="section">
+    <h3>แบบฝึกหัด 2: นับจำนวนการคลิกปุ่ม</h3>
+    <button id="count">คลิกเพื่อนับ</button>
+    <p id="output2"></p>
+  </div>
 
-        btn2.addEventListener("click", function () {
-            output1.textContent = "คุณคลิกข้อที่ 2 ! ✨";
-        });
+  <!-- แบบฝึกหัด 3 -->
+  <div class="section">
+    <h3>แบบฝึกหัด 3: สลับข้อความระหว่าง "เปิด" กับ "ปิด"</h3>
+    <button id="toggleBtn">สลับเปลี่ยน</button>
+    <p id="output3">❤️‍🔥 เปิด</p>
+  </div>
 
-        btn3.addEventListener("click", function () {
-            output1.textContent = "คุณคลิกข้อที่ 3 ! 🚀";
-        });
+  <script>
+    // แบบฝึกหัด 1
+    const btn1 = document.getElementById("show1");
+    const btn2 = document.getElementById("show2");
+    const btn3 = document.getElementById("show3");
+    const output1 = document.getElementById("output1");
 
-     
-    </script>
+    btn1.addEventListener("click", () => output1.textContent = "คุณคลิกข้อที่ 1 ! 🎉");
+    btn2.addEventListener("click", () => output1.textContent = "คุณคลิกข้อที่ 2 ! 💐");
+    btn3.addEventListener("click", () => output1.textContent = "คุณคลิกข้อที่ 3 ! 👑");
+
+    // แบบฝึกหัด 2
+    const countBtn = document.getElementById("count");
+    const output2 = document.getElementById("output2");
+    let clickCount = 0;
+
+    countBtn.addEventListener("click", () => {
+      clickCount++;
+      output2.textContent = `จำนวนคลิก ${clickCount} ครั้ง 💣`;
+    });
+
+    // แบบฝึกหัด 3
+    const toggleBtn = document.getElementById("toggleBtn");
+    const output3 = document.getElementById("output3");
+
+    toggleBtn.addEventListener("click", () => {
+      if (output3.textContent.trim() === "❤️‍🔥 เปิด") {
+        output3.textContent = "💔 ปิด";
+        output3.style.color = "red";
+      } else {
+        output3.textContent = "❤️‍🔥 เปิด";
+        output3.style.color = "green";
+      }
+    });
+  </script>
 </body>
+
 </html>
