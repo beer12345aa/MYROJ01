@@ -1,0 +1,47 @@
+/* ตั้งค่ารูปแบบตัวอักษรและการจัดตำแหน่ง */
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* จัดรูปแบบกล่องกรอกข้อมูล */
+input {
+  padding: 8px;
+  width: 100px;
+  margin: 10px;
+}
+
+/* ปุ่มคำนวณ */
+button {
+  padding: 10px 20px;
+  background-color: #00bd19;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ป้ายแสดงผลลัพธ์ */
+#result {
+  margin-top: 20px;
+  font-size: 22px;
+  color: green;
+  display: inline-block;
+}
+/* กล่องกิจกรรม */
+.section {
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+/* กล่องสี */
+#box {
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
+  /*margin-bottom: 20px;*/
+  margin: 20px auto;   /* 👉 จัดกึ่งกลางแนวนอน */
+}
