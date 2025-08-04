@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #ffc484;
+  background: #a4deff;
   margin: 0;
   padding: 20px;
 }
@@ -23,7 +23,7 @@ h1 {
 }
 
 .card {
-  background: #fff07a;
+  background: #c5dbff;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
